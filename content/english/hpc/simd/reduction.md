@@ -22,7 +22,7 @@ $$
 s_i = \sum_{j=0}^{n / 8} a_{8 \cdot j + i }
 $$
 
-If we store these 8 accumulators in a single 256-bit vector, we can update them all at once by adding consecutive 8-element segments of the array. With [vector extensions](../x86-simd), this is straightforward:
+If we store these 8 accumulators in a single 256-bit vector, we can update them all at once by adding consecutive 8-element segments of the array. With [vector extensions](../intrinsics), this is straightforward:
 
 ```c++
 int sum_simd(v8si *a, int n) {
