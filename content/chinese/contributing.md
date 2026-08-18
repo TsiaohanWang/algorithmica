@@ -99,7 +99,7 @@ published: true
 
 **Python.** 完全遵循 PEP。
 
-**C++：**
+**C++**：
 
 1. 尽量使用具体类型，而不是元编程。
 2. 绝对不要用 `#define forn`。

@@ -11,7 +11,7 @@ weight: 2
 
 ### 硬件事件
 
-硬件*性能计数器（performance counter）*是内置于微处理器中的特殊寄存器，可以保存某些与硬件相关的活动的计数。在微芯片上添加它们的成本很低，因为它们基本上就是带有激活引线的二进制计数器。
+硬件*性能计数器（performance counter*）是内置于微处理器中的特殊寄存器，可以保存某些与硬件相关的活动的计数。在微芯片上添加它们的成本很低，因为它们基本上就是带有激活引线的二进制计数器。
 
 每个性能计数器都连接到一大片电路子集，可以配置为在某个特定的硬件事件（如分支预测失败或缓存未命中）发生时递增。你可以在程序开始时重置计数器、运行它、在结束时输出其中保存的值，它就等于整个执行过程中某个事件被触发的精确次数。
 
@@ -21,7 +21,7 @@ weight: 2
 
 ### 用 perf 进行剖析
 
-依赖上述事件采样技术的性能分析工具称为*统计剖析器（statistical profiler）*。这类工具很多，但本书主要使用的是随 Linux 内核发布的 [perf](https://perf.wiki.kernel.org/)，它正是一个统计剖析器。在非 Linux 系统上，你可以使用英特尔的 [VTune](https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/vtune-profiler.html#gs.cuc0ks)，就我们的用途而言，它提供的功能大致相同。它是免费的，不过是专有软件，而且你需要每 90 天续期一次社区许可证；而 perf 则是自由软件意义上的免费。
+依赖上述事件采样技术的性能分析工具称为*统计剖析器（statistical profiler*）。这类工具很多，但本书主要使用的是随 Linux 内核发布的 [perf](https://perf.wiki.kernel.org/)，它正是一个统计剖析器。在非 Linux 系统上，你可以使用英特尔的 [VTune](https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/vtune-profiler.html#gs.cuc0ks)，就我们的用途而言，它提供的功能大致相同。它是免费的，不过是专有软件，而且你需要每 90 天续期一次社区许可证；而 perf 则是自由软件意义上的免费。
 
 Perf 是一个命令行应用程序，基于程序的实时执行生成报告。它不需要源代码，可以剖析非常广泛的应用程序，甚至包括涉及多进程、与操作系统交互的程序。
 
@@ -93,7 +93,7 @@ Overhead  Command  Shared Object        Symbol
    0.80%  run      libc-2.33.so         [.] rand
 ```
 
-注意，对每个函数，列表里只给出它自己的*开销（overhead）*，而不是总运行时间（例如，`setup` 包含 `std::__introsort_loop`，但它只把自己的开销记为 3.43%）。有一些工具可以把 perf 报告构建成[火焰图（flame graph）](https://www.brendangregg.com/flamegraphs.html)使其更直观。你还需要考虑可能的内联，这里的 `std::lower_bound` 显然就是被内联了。Perf 还会跟踪共享库（如 `libc`），以及一般的其他任何衍生进程：如果你愿意，可以用 perf 启动一个浏览器，看看里面发生了什么。
+注意，对每个函数，列表里只给出它自己的*开销（overhead*），而不是总运行时间（例如，`setup` 包含 `std::__introsort_loop`，但它只把自己的开销记为 3.43%）。有一些工具可以把 perf 报告构建成[火焰图（flame graph）](https://www.brendangregg.com/flamegraphs.html)使其更直观。你还需要考虑可能的内联，这里的 `std::lower_bound` 显然就是被内联了。Perf 还会跟踪共享库（如 `libc`），以及一般的其他任何衍生进程：如果你愿意，可以用 perf 启动一个浏览器，看看里面发生了什么。
 
 接下来，你可以“放大”这些函数中的任意一个，它会（除了其他功能外）提供显示其反汇编及对应热力图的功能。例如，下面是 `query` 的汇编：
 

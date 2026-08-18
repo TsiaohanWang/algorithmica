@@ -110,6 +110,6 @@ int main() {
 
 这里统计空闲对角线数量需要 $O(n^2)$ 时间。可以优化到 $O(n)$，从而多进行 $O(n)$ 倍的迭代：可以建立一个布尔数组，记录每条对角线是否已被占用。有了这个优化，[informatics 上的这道题](https://informatics.mccme.ru/mod/statements/view.php?id=1975)应该就能通过了。
 
-**练习题。**把重算优化到 $O(1)$。
+**练习题**。把重算优化到 $O(1)$。
 
-**注。**事实上，皇后问题有[构造性解法](https://en.wikipedia.org/wiki/Eight_queens_puzzle)。
+**注**。事实上，皇后问题有[构造性解法](https://en.wikipedia.org/wiki/Eight_queens_puzzle)。

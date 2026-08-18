@@ -121,7 +121,7 @@ SSE 是纯汇编指令。任何更高[抽象层](https://en.wikipedia.org/wiki/J
 using namespace std;
 ```
 
-**例子。** 把两个 64 位实数组相加的简单循环，用 SSE intrinsics 写：
+**例子**。 把两个 64 位实数组相加的简单循环，用 SSE intrinsics 写：
 
 ```c++
 double a[100], b[100], c[100];
@@ -173,7 +173,7 @@ int sum(int a[], int n) {
 }
 ```
 
-**命令名。** 多数命令编码为 `_mm<维度>_<动作>_<类型>`。
+**命令名**。 多数命令编码为 `_mm<维度>_<动作>_<类型>`。
 
 另几个例子：
 
@@ -191,7 +191,7 @@ int sum(int a[], int n) {
 
 组合起来函数极多。完整文档——[Intel Intrinsics Guide](https://software.intel.com/sites/landingpage/IntrinsicsGuide/)——在每位有自尊的性能工程师浏览器书签里。
 
-**对齐。** 单独提一点：读写操作各有两版——`load` / `loadu` 与 `store` / `storeu`。字母「u」表示「unaligned」（英文 *未对齐*）。前者只在整个读取块落进一条缓存行时才正确（否则运行时触发 segfault），而 unaligned 版总是工作。
+**对齐**。 单独提一点：读写操作各有两版——`load` / `loadu` 与 `store` / `storeu`。字母「u」表示「unaligned」（英文 *未对齐*）。前者只在整个读取块落进一条缓存行时才正确（否则运行时触发 segfault），而 unaligned 版总是工作。
 
 有时尤其当操作「轻」时，这个区别影响很大——若无法「对齐」内存，性能可能骤降（至少因为要加载两条缓存行而非一条）。
 
@@ -236,13 +236,13 @@ for (int i = 0; i < n; i += 8) {
 
 数组起点指针现在是 32 字节的倍数，即 sse 块大小。于是任何读写保证在缓存行内。
 
-**类型化。** 其实用 intrinsics 加载、保存数据乃至用 `__m` 类型都不是必须——都能用普通 reinterpret_cast 完成。所有数据格式相同，不同类型只是为类型检查、避免相关错误。
+**类型化**。 其实用 intrinsics 加载、保存数据乃至用 `__m` 类型都不是必须——都能用普通 reinterpret_cast 完成。所有数据格式相同，不同类型只是为类型检查、避免相关错误。
 
 对每种寄存器维度有 3 种类型。以 AVX 为例：`__m256` 用于 `float`、`__m256d` 用于 `double`、`__m256i` 用于各种 `int`。
 
 有些操作只对某一类型存在（例如 `_mm256_blendv_ps` 没有 32 位 `int` 对应），但用其他类型完全一样。因此要让编译器满意，需对其做类型转换，这不会在运行时花额外指令。它们都是这种格式：`_mm<维度>_cast<来源>_<去向>`。
 
-**Loop unrolling。** 加 `unroll-loops` 标志（或 pragma：`#pragma GCC optimize("unroll-loops")`）让编译器做循环[「展开」](https://en.wikipedia.org/wiki/Loop_unrolling)，即把形如
+**Loop unrolling**。 加 `unroll-loops` 标志（或 pragma：`#pragma GCC optimize("unroll-loops")`）让编译器做循环[「展开」](https://en.wikipedia.org/wiki/Loop_unrolling)，即把形如
 
 ```c++
 for (int i = 1; i < n; i++)
@@ -492,7 +492,7 @@ $n \approx 10^7$ 时树状数组连 L3 都装不进，程序几乎每次访问 R
 
 ## 杂项
 
-**C++ 到汇编。** 这样查看生成指令：
+**C++ 到汇编**。 这样查看生成指令：
 
 ```powershell
 g++ -S program.cpp -o program.s
@@ -508,7 +508,7 @@ g++ -fopt-info-vec-optimized program.cpp -o run
 
 可把 `optimized` 换成 `missed` 或 `all`，查看其他操作没能向量化的原因。
 
-**打印向量。** 调试时这段代码有帮助：
+**打印向量**。 调试时这段代码有帮助：
 
 ```c++
 template<typename T>

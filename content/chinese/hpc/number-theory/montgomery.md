@@ -49,7 +49,7 @@ Montgomery 乘法的做法是：先把乘数变换到 *Montgomery 空间*，在�
 
 <!-- 因此 $n$ 需要是奇数，这样 $2$ 的每个幂次都会与 $n$ 互质。如果不是，我们可以把它变成奇数（？）。 -->
 
-**定义。** 数 $x$ 在 Montgomery 空间中的*代表元* $\bar x$ 定义为
+**定义**。 数 $x$ 在 Montgomery 空间中的*代表元* $\bar x$ 定义为
 
 $$
 \bar{x} = x \cdot r \bmod n
@@ -290,4 +290,4 @@ int inverse(int _a) {
 
 普通的快速幂配合编译器生成的快速取模技巧，每次 `inverse` 调用大约需要 170ns，而这个实现大约需要 166ns；如果省略 `transform` 和 `reduce`，则降到约 158ns（合理的用例是 `inverse` 作为更大的模运算中的子过程）。这是一个小小的改进，但 Montgomery 乘法在 SIMD 应用和更大的数据类型上会带来更大的优势。
 
-**练习题。** 实现高效的*模*[矩阵乘法](/hpc/algorithms/matmul)。
+**练习题**。 实现高效的*模*[矩阵乘法](/hpc/algorithms/matmul)。

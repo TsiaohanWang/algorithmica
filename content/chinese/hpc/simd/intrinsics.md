@@ -121,7 +121,7 @@ x86 SIMD 内建函数的一个非常有用的参考是 [Intel Intrinsics Guide](
 
 当你确定某个指令存在、只想查它的名字或性能信息时，Intel 参考很有用。当你不知道它是否存在时，这份[速查表](https://db.in.tum.de/~finis/x86%20intrinsics%20cheat%20sheet%20v1.0.pdf)可能更合适。
 
-**指令选择。**注意，编译器并不一定会选用你指定的那条指令。与我们[之前讨论过](/hpc/analyzing-performance/assembly)的标量 `c = a + b` 类似，也存在融合的向量加法指令，因此编译器[把上面的代码重写](https://godbolt.org/z/dMz8E5Ye8)成每轮循环 3 条指令的块，而不是 2+1+1=4 条：
+**指令选择**。注意，编译器并不一定会选用你指定的那条指令。与我们[之前讨论过](/hpc/analyzing-performance/assembly)的标量 `c = a + b` 类似，也存在融合的向量加法指令，因此编译器[把上面的代码重写](https://godbolt.org/z/dMz8E5Ye8)成每轮循环 3 条指令的块，而不是 2+1+1=4 条：
 
 ```nasm
 vmovapd ymm1, YMMWORD PTR a[rax]

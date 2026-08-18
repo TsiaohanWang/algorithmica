@@ -160,5 +160,5 @@ $O(\\sqrt{S}\\log{S})$，因为对每个重量我们保留了 $\\leq
 (\\sum\\limits_{p=2}^{\\log{S}}{\\frac{1}{\\sqrt{2}^p}})$ 个数，这是
 $O(\\sqrt{S})$。
 
-**Bonus：**如果再用 bitset 来做背包，就能得到
+**Bonus**：如果再用 bitset 来做背包，就能得到
 $O(\\frac{S\\sqrt{S}}{64})$ 的解法。

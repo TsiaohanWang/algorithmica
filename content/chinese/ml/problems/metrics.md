@@ -2,7 +2,7 @@
 title: 分类的评估指标
 ---
 
-分类错误分为**假阳性（False Positive）**和**假阴性（False Negative）**。在统计学中，前一种错误称为第一类错误，后一种称为第二类错误。
+分类错误分为**假阳性（False Positive**）和**假阴性（False Negative**）。在统计学中，前一种错误称为第一类错误，后一种称为第二类错误。
 
 ![](../img/errors.png)
 
@@ -10,19 +10,19 @@ title: 分类的评估指标
 
 $$\text { accuracy }=\frac{T P+T N}{T P+T N+F P+F N}$$
 
-**Accuracy（准确率）**是算法给出正确答案的比例。在类别不平衡的问题中，这个指标没有用处。
+**Accuracy（准确率**）是算法给出正确答案的比例。在类别不平衡的问题中，这个指标没有用处。
 
 ## Precision
 
 $$\text { precision }=\frac{T P}{T P+F P}$$
 
-**Precision（精确率）**是指被分类器判为正类的对象中确实为正类的比例。
+**Precision（精确率**）是指被分类器判为正类的对象中确实为正类的比例。
 
 ## Recall
 
 $$\text { recall }=\frac{T P}{T P+F N}$$
 
-**Recall（召回率）**是指所有正类对象中被正确找出的正类对象所占的比例。
+**Recall（召回率**）是指所有正类对象中被正确找出的正类对象所占的比例。
 
 *Recall* 体现算法发现某个类的能力，而 *precision* 体现把该类与其他类区分开的能力。
 
@@ -55,7 +55,7 @@ $$\text { logloss }=-\frac{1}{l} \cdot \sum_{i=1}^{l}\left(y_{i} \cdot \log \lef
 
 这里 $\hat{y}$ 是算法在第 $i$ 个样本上的输出，$y$ 是第 $i$ 个样本的真实类别标签，$l$ 是数据集大小。
 
-可以把最小化 *logloss* 理解为：通过对错误预测施加惩罚来实现 *accuracy* 的最大化。不过，*logloss* 会对分类器在错误答案上的高置信度施加极其严厉的惩罚。
+可以把最小化 *logloss* 理解为：通过对错误预测施加惩罚来实现 *accuracy* 的最大化。不过*，logloss* 会对分类器在错误答案上的高置信度施加极其严厉的惩罚。
 
 ## 多分类问题
 
@@ -68,7 +68,7 @@ $\mathrm{TP}_{k}, \mathrm{FP}_{k}, \mathrm{FN}_{k}, \mathrm{TN}_{k} .$
 
 ## 微平均 {#微平均 .unnumbered}
 
-在*微平均*中，先对所有类求这些指标的平均值，然后计算最终的二分类指标——例如*精确率*、*召回率*或*F 值*。例如，*精确率*按公式
+在*微平均*中，先对所有类求这些指标的平均值，然后计算最终的二分类指标——例如*精确率*、*召回率*或*F 值*。例如*，精确率*按公式
 $$\operatorname{precision}(a, X)=\frac{\overline{\mathrm{TP}}}{\overline{\mathrm{TP}}+\overline{\mathrm{FP}}}$$
 计算，其中例如 $\overline{\mathrm{TP}}$ 按公式
 $$\overline{\mathrm{TP}}=\frac{1}{K} \sum_{k=1}^{K} \mathrm{TP}_{k}$$
@@ -76,5 +76,5 @@ $$\overline{\mathrm{TP}}=\frac{1}{K} \sum_{k=1}^{K} \mathrm{TP}_{k}$$
 
 ## 宏平均 {#宏平均 .unnumbered}
 
-在*宏平均*中，先为每个类计算最终指标，然后把结果对所有类取平均。例如，*精确率*计算为
+在*宏平均*中，先为每个类计算最终指标，然后把结果对所有类取平均。例如*，精确率*计算为
 $$\operatorname{precision}(a, X)=\frac{1}{K} \sum_{k=1}^{K} \operatorname{precision}_{k}(a, X) ; \quad \text { precision }_{k}(a, X)=\frac{\mathrm{TP}_{k}}{\mathrm{TP}_{k}+\mathrm{FP}_{k}}$$

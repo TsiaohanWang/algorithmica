@@ -17,7 +17,7 @@ weight: 1
 
 事实上，它如此可靠，以至于一些高级编程语言——最著名的是 JavaScript——根本没有整数。在 JavaScript 中只有一种 `number` 类型，内部以 64 位 `double` 存储；由于浮点运算的工作方式，$[-2^{53}, 2^{53}]$ 之间的所有整数以及涉及它们的计算结果都能被精确存储，因此从程序员的角度看，几乎没有单独设立整数类型的实际需要。
 
-一个值得注意的例外是当你需要对数字执行位运算时——*浮点运算单元（floating-point unit）*（负责浮点数运算的协处理器）通常不支持这种操作。这时就需要把数字转换成整数。这个操作在启用 JavaScript 的浏览器中使用极其频繁，以至于 arm 专门[增加了一条 "FJCVTZS" 指令](https://community.arm.com/developer/ip-products/processors/b/processors-ip-blog/posts/armv8-a-architecture-2016-additions)，全称是 "Floating-point Javascript Convert to Signed fixed-point, rounding toward Zero"（浮点 JavaScript 转换为有符号定点数，向零舍入），它的作用正如其名——以与 JavaScript 完全相同的方式把实数转换为整数——这是软硬件反馈循环在现实中的一个有趣例子。
+一个值得注意的例外是当你需要对数字执行位运算时——*浮点运算单元（floating-point unit*）（负责浮点数运算的协处理器）通常不支持这种操作。这时就需要把数字转换成整数。这个操作在启用 JavaScript 的浏览器中使用极其频繁，以至于 arm 专门[增加了一条 "FJCVTZS" 指令](https://community.arm.com/developer/ip-products/processors/b/processors-ip-blog/posts/armv8-a-architecture-2016-additions)，全称是 "Floating-point Javascript Convert to Signed fixed-point, rounding toward Zero"（浮点 JavaScript 转换为有符号定点数，向零舍入），它的作用正如其名——以与 JavaScript 完全相同的方式把实数转换为整数——这是软硬件反馈循环在现实中的一个有趣例子。
 
 不过，除非你是那种纯粹用实数类型来模拟整数运算的 JavaScript 开发者，否则你很可能需要一份更深入的浮点运算指南，所以我们先从更宽泛的主题讲起。
 
@@ -58,7 +58,7 @@ struct r {
 };
 ```
 
-WolframAlpha 和 SageMath 这类*计算机代数（computer algebra）*系统正是这样工作的：它们只对符号表达式进行操作，避免把任何东西当作实数值来求值。
+WolframAlpha 和 SageMath 这类*计算机代数（computer algebra*）系统正是这样工作的：它们只对符号表达式进行操作，避免把任何东西当作实数值来求值。
 
 用这种方法，你能获得绝对精度，在范围有限（比如只支持有理数）时它表现良好。但代价是巨大的计算开销，因为一般情况下，你需要以某种方式存储产生结果的整段操作历史，并在每次执行新操作时把它考虑进去——随着历史的增长，这会迅速变得不可行。
 
@@ -96,7 +96,7 @@ $$
 
 在大多数数值应用中，我们主要关心的是相对误差。我们希望计算的结果与真实值相差不超过，比如说，$0.01\\%$，而且我们并不真的在乎这 $0.01\\%$ 在绝对单位下相当于多少。
 
-浮点数解决这个问题的方法，是存储一定数量的最高有效位数字以及这个数的数量级。更准确地说，它们用一个整数（称为*有效数（significand）*或*尾数（mantissa）*）表示，并用某个固定底数的指数进行缩放——最常见的是 2 或 10。例如：
+浮点数解决这个问题的方法，是存储一定数量的最高有效位数字以及这个数的数量级。更准确地说，它们用一个整数（称为*有效数（significand*）或*尾数（mantissa*））表示，并用某个固定底数的指数进行缩放——最常见的是 2 或 10。例如：
 
 $$
 1.2345 =
