@@ -1,4 +1,4 @@
-baseURL: "https://ru.algorithmica.org/"
+baseURL: "https://TsiaohanWang.github.io/algorithmica/"
 theme:
 - algorithmica
 - reveal-hugo
