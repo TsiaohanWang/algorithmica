@@ -2,7 +2,7 @@
   {{ $currentPage := . }}
   {{ $currentDivision := . }}
   <div class='title'>
-    <a href='/'>{{ .Site.Title }}</a>
+    <a href='{{ .Site.Home.RelPermalink }}'>{{ .Site.Title }}</a>
     {{ range .Site.Menus.main }}
       {{ if $currentPage.HasMenuCurrent "main" . }}
         {{ $currentDivision = . }}

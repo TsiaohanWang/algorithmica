@@ -22,7 +22,7 @@ markup:
     footnote: false  # katex conflict
     renderer:
       unsafe: true
-defaultContentLanguage: en
+defaultContentLanguage: zh
 defaultContentLanguageInSubdir: true
 sectionPagesMenu: main
 languages:
