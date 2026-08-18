@@ -28,6 +28,9 @@ jobs:
       - name: Build
         run: hugo --minify
 
+      - name: Rewrite root-relative URLs for subpath hosting
+        run: python3 scripts/subpath-rewrite.py
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

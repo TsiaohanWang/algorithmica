@@ -3,7 +3,7 @@ title: Extended Euclidean Algorithm
 weight: 3
 ---
 
-[Fermat’s theorem](../modular/#fermats-theorem) allows us to calculate modular multiplicative inverses through [binary exponentiation](..exponentiation/) in $O(\log n)$ operations, but it only works with prime modula. There is a generalization of it, [Euler's theorem](https://en.wikipedia.org/wiki/Euler%27s_theorem), stating that if $m$ and $a$ are coprime, then
+[Fermat’s theorem](../modular/#fermats-theorem) allows us to calculate modular multiplicative inverses through [binary exponentiation](../exponentiation/) in $O(\log n)$ operations, but it only works with prime modula. There is a generalization of it, [Euler's theorem](https://en.wikipedia.org/wiki/Euler%27s_theorem), stating that if $m$ and $a$ are coprime, then
 
 $$
 a^{\phi(m)} \equiv 1 \pmod m

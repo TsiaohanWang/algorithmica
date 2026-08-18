@@ -207,7 +207,7 @@ loop:
 
 现代处理器可以并行执行许多指令，这实质上意味着这个计算的真正「代价」大约等于其关键路径上的延迟之和。在这个例子中，就是 `diff`、`abs`、`ctz` 和 `shift` 的总延迟。
 
-我们可以利用一个事实来降低这个延迟：其实只用 `diff = a - b` 就能计算 `ctz`，因为一个能被 $2^k$ 整除的[负数](../hpc/arithmetic/integer/#signed-integers)在其二进制表示末尾仍然有 $k$ 个零。这让我们不必先算出 `max(diff, -diff)`，从而得到这样一条更短的依赖图：
+我们可以利用一个事实来降低这个延迟：其实只用 `diff = a - b` 就能计算 `ctz`，因为一个能被 $2^k$ 整除的[负数](../../arithmetic/integer/#signed-integers)在其二进制表示末尾仍然有 $k$ 个零。这让我们不必先算出 `max(diff, -diff)`，从而得到这样一条更短的依赖图：
 
 <!--
 \node [draw, circle] (diff)  at (3, 10) {diff};

@@ -3,7 +3,7 @@ title: 扩展欧几里得算法
 weight: 3
 ---
 
-[费马定理](../modular/#fermats-theorem) 允许我们通过[快速幂](..exponentiation/)在 $O(\log n)$ 次操作内计算模乘法逆元，但它只对质数模数有效。它有一个推广形式，即[欧拉定理](https://en.wikipedia.org/wiki/Euler%27s_theorem)，该定理指出，如果 $m$ 与 $a$ 互质，那么
+[费马定理](../modular/#fermats-theorem) 允许我们通过[快速幂](../exponentiation/)在 $O(\log n)$ 次操作内计算模乘法逆元，但它只对质数模数有效。它有一个推广形式，即[欧拉定理](https://en.wikipedia.org/wiki/Euler%27s_theorem)，该定理指出，如果 $m$ 与 $a$ 互质，那么
 
 $$
 a^{\phi(m)} \equiv 1 \pmod m

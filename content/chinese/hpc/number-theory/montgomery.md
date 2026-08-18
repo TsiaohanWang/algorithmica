@@ -37,7 +37,7 @@ int faster_sum(int *a, int n) {
 }
 ```
 
-然而，有时你只有一连串的模乘法，除了依赖需要常量模数与一些预计算的[整数除法技巧](../hpc/arithmetic/division/)之外，没有很好的办法摆脱对除法余数的计算。
+然而，有时你只有一连串的模乘法，除了依赖需要常量模数与一些预计算的[整数除法技巧](../../arithmetic/division/)之外，没有很好的办法摆脱对除法余数的计算。
 
 但还有另一种专门为模运算设计的技术，称为 *Montgomery 乘法*。
 
@@ -178,7 +178,7 @@ u32 reduce(u64 x) {
 }
 ```
 
-Montgomery 乘法相对于其他模约减方法的主要优势之一，是它不需要非常大的数据类型：它只需要一次 $r \times r$ 乘法，并提取结果的低、高各 $r$ 位，这在大多数硬件上[有专门支持](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand=7395,7392,7269,4868,7269,7269,1820,1835,6385,5051,4909,4918,5051,7269,6423,7410,150,2138,1829,1944,3009,1029,7077,519,5183,4462,4490,1944,5055,5012,5055&techs=AVX,AVX2&text=mul)，也使其易于推广到 [SIMD](../hpc/simd/) 和更大的数据类型：
+Montgomery 乘法相对于其他模约减方法的主要优势之一，是它不需要非常大的数据类型：它只需要一次 $r \times r$ 乘法，并提取结果的低、高各 $r$ 位，这在大多数硬件上[有专门支持](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand=7395,7392,7269,4868,7269,7269,1820,1835,6385,5051,4909,4918,5051,7269,6423,7410,150,2138,1829,1944,3009,1029,7077,519,5183,4462,4490,1944,5055,5012,5055&techs=AVX,AVX2&text=mul)，也使其易于推广到 [SIMD](../../simd/) 和更大的数据类型：
 
 ```c++
 typedef __uint128_t u128;
@@ -225,9 +225,9 @@ a \cdot x \cdot (2 - a \cdot x)
 \end{aligned}
 $$
 
-我们可以从 $x = 1$ 作为 $a$ 模 $2^1$ 的逆元出发，应用这个恒等式恰好 $\log_2 r$ 次，每次使逆元的位数翻倍——这有点让人想起[牛顿法](../hpc/arithmetic/newton/)。
+我们可以从 $x = 1$ 作为 $a$ 模 $2^1$ 的逆元出发，应用这个恒等式恰好 $\log_2 r$ 次，每次使逆元的位数翻倍——这有点让人想起[牛顿法](../../arithmetic/newton/)。
 
-**变换** 把数变换到 Montgomery 空间可以乘 $r$ 后按[通常的方式](../hpc/arithmetic/division/)取模，但我们也可以利用这个关系：
+**变换** 把数变换到 Montgomery 空间可以乘 $r$ 后按[通常的方式](../../arithmetic/division/)取模，但我们也可以利用这个关系：
 
 $$
 \bar{x} = x \cdot r \bmod n = x * r^2
@@ -268,7 +268,7 @@ struct Montgomery {
 };
 ```
 
-为了测试它的性能，我们可以把 Montgomery 乘法接入[快速幂](../hpc/number-theory/exponentiation/)：
+为了测试它的性能，我们可以把 Montgomery 乘法接入[快速幂](../exponentiation/)：
 
 ```c++
 constexpr Montgomery space(M);
