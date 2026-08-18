@@ -39,6 +39,13 @@ languages:
     languageName: Русский
     languageCode: "ru-ru"
     weight: 2
+  zh:
+    title: Algorithmica
+    baseURL: https://zh.algorithmica.org
+    contentDir: content/chinese
+    languageName: 中文
+    languageCode: "zh-cn"
+    weight: 3
 params:
   repo: "https://github.com/algorithmica-org/algorithmica"
   reveal_hugo:

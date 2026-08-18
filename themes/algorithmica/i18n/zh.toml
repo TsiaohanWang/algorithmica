@@ -1,0 +1,35 @@
+[authors]
+other = "作者"
+
+[editors]
+other = "编辑"
+
+[published]
+other = "发布"
+
+[updated]
+other = "更新"
+
+[sections]
+other = "章节文章"
+
+[search]
+other = "搜索本书…"
+
+[searchCountPrefix]
+other = "找到"
+
+[searchCountSuffix]
+other = "个页面"
+
+[prerequisites]
+other = "前置知识"
+
+[translations]
+other = "翻译"
+
+[copyright1]
+other = "Copyleft 2017–2022 Algorithmica.org"
+
+[copyright2]
+other = "内容采用 <a href='https://tldrlegal.com/license/creative-commons-attribution-sharealike-4.0-international-(cc-by-sa-4.0)'>CC BY-SA</a> 许可发布"
